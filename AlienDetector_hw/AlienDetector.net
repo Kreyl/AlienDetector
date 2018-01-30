@@ -1,0 +1,712 @@
+# EESchema Netlist Version 1.1 created  15/01/2012 21:37:41
+(
+ ( /4F13052E $noname  XL7 CONN_8 {Lib=CONN_8}
+  (    1 /PB1 )
+  (    2 /PB3 )
+  (    3 /PB4 )
+  (    4 /PB5 )
+  (    5 /PB7 )
+  (    6 /PB8 )
+  (    7 /PB9 )
+  (    8 GND )
+ )
+ ( /4F130223 $noname  R1 100R {Lib=R}
+  (    1 N-000047 )
+  (    2 /Buzzer )
+ )
+ ( /4F130217 $noname  C3 0.1u {Lib=C}
+  (    1 N-000054 )
+  (    2 N-000047 )
+ )
+ ( /4F1301F4 $noname  BZ1 BUZZER {Lib=BUZZER}
+  (    A N-000054 )
+  (    C GND )
+ )
+ ( /4F12FD9C $noname  XL6 SMA_L {Lib=SMA_L}
+  (  GND GND )
+  (   RF /RF_Out )
+ )
+ ( /4F12FD84 $noname  C30 1.5pF {Lib=C}
+  (    1 /RF_Out )
+  (    2 GND )
+ )
+ ( /4F12FD77 $noname  L4 1.2nH {Lib=L}
+  (    1 /RF_Out )
+  (    2 /A5 )
+ )
+ ( /4F12FD65 $noname  C29 1.8pF {Lib=C}
+  (    1 /A5 )
+  (    2 GND )
+ )
+ ( /4F12FD57 $noname  C28 1pF {Lib=C}
+  (    1 /A4 )
+  (    2 /A5 )
+ )
+ ( /4F12FD4A $noname  L3 1.2nH {Lib=L}
+  (    1 /A5 )
+  (    2 /A3 )
+ )
+ ( /4F12FC74 $noname  L2 1.2nH {Lib=L}
+  (    1 /A4 )
+  (    2 GND )
+ )
+ ( /4F12FC51 $noname  C27 1pF {Lib=C}
+  (    1 GND )
+  (    2 /A3 )
+ )
+ ( /4F12FC41 $noname  C26 100pF {Lib=C}
+  (    1 /A2 )
+  (    2 /A4 )
+ )
+ ( /4F12FC10 $noname  C4 100pF {Lib=C}
+  (    1 /A1 )
+  (    2 /A3 )
+ )
+ ( /4F12F8F9 $noname  DD1 STM32F10X-48 {Lib=STM32F10X-48}
+  (    1 +3.3V )
+  (    2 ? )
+  (    3 ? )
+  (    4 ? )
+  (    5 ? )
+  (    6 ? )
+  (    7 ? )
+  (    8 GND )
+  (    9 +3.3V )
+  (   10 /ADC_BAT )
+  (   11 ? )
+  (   12 ? )
+  (   13 /CC_GDO0 )
+  (   14 /CC_CS )
+  (   15 /CC_SCK )
+  (   16 /CC_MISO )
+  (   17 /CC_MOSI )
+  (   18 /LCD_BCKLT )
+  (   19 /PB1 )
+  (   20 /LCD_XCS )
+  (   21 /LCD_SDA )
+  (   22 /LCD_XRES )
+  (   23 GND )
+  (   24 +3.3V )
+  (   25 /LCD_SCLK )
+  (   26 ? )
+  (   27 ? )
+  (   28 ? )
+  (   29 ? )
+  (   30 /TX1 )
+  (   31 ? )
+  (   32 /PWR_ERROR )
+  (   33 ? )
+  (   34 /SWDIO )
+  (   35 GND )
+  (   36 +3.3V )
+  (   37 /SWCLK )
+  (   38 ? )
+  (   39 /PB3 )
+  (   40 /PB4 )
+  (   41 /PB5 )
+  (   42 /Buzzer )
+  (   43 /PB7 )
+  (   44 GND )
+  (   45 /PB8 )
+  (   46 /PB9 )
+  (   47 GND )
+  (   48 +3.3V )
+ )
+ ( /4F12F80F $noname  XL5 CONN_2 {Lib=CONN_2}
+  (    1 /TX1 )
+  (    2 GND )
+ )
+ ( /4F12F71A $noname  XL1 CONN_8 {Lib=CONN_8}
+  (    1 /LCD_XRES )
+  (    2 /LCD_XCS )
+  (    3 GND )
+  (    4 /LCD_SDA )
+  (    5 /LCD_SCLK )
+  (    6 +3.3V )
+  (    7 +3.3V )
+  (    8 /LCD_BCKLT )
+ )
+ ( /4EC00D19 $noname  F3 FUSE0R {Lib=FUSE0R}
+  (    1 VCC )
+  (    2 +BATT )
+ )
+ ( /4EC00CE8 $noname  F4 FUSE0R {Lib=FUSE0R}
+  (    1 +3.3V )
+  (    2 VCC )
+ )
+ ( /4EBE2A37 $noname  XTAL2 26MHz {Lib=CRYSTAL_H}
+  (    1 N-000049 )
+  (    2 N-000001 )
+  (    H GND )
+ )
+ ( /4EBAE71B $noname  C5 0.1u {Lib=C}
+  (    1 VCC )
+  (    2 GND )
+ )
+ ( /4EBAE71A $noname  C6 10u {Lib=C}
+  (    1 VCC )
+  (    2 GND )
+ )
+ ( /4EBAE6D4 $noname  D1 D_SHOTTKY {Lib=D_SHOTTKY}
+  (    A /Lout )
+  (    C VCC )
+ )
+ ( /4EBAE696 $noname  L1 22uH {Lib=L}
+  (    1 /Lout )
+  (    2 +BATT )
+ )
+ ( /4EBAE654 $noname  C2 10u {Lib=C}
+  (    1 +BATT )
+  (    2 GND )
+ )
+ ( /4EBAE64E $noname  C1 0.1u {Lib=C}
+  (    1 +BATT )
+  (    2 GND )
+ )
+ ( /4EBAE61B $noname  DA3 NCP1400 {Lib=NCP1400}
+  (    1 VCC )
+  (    2 VCC )
+  (    3 ? )
+  (    4 GND )
+  (    5 /Lout )
+ )
+ ( /4EBAE3A0 $noname  C16 10u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4EBAE39C $noname  C15 1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4EBAE39B $noname  C11 1u {Lib=C}
+  (    1 VCC )
+  (    2 GND )
+ )
+ ( /4EBAE399 $noname  DA4 LP2951 {Lib=LP2951}
+  (    1 +3.3V )
+  (    2 ? )
+  (    3 GND )
+  (    4 GND )
+  (    5 /PWR_ERROR )
+  (    6 ? )
+  (    7 N-000007 )
+  (    8 VCC )
+ )
+ ( /4EBAE397 $noname  R4 2000k {Lib=R}
+  (    1 +3.3V )
+  (    2 N-000007 )
+ )
+ ( /4EBAE396 $noname  R5 1200k {Lib=R}
+  (    1 N-000007 )
+  (    2 GND )
+ )
+ ( /4EBAE394 $noname  C14 1000pF {Lib=C}
+  (    1 +3.3V )
+  (    2 N-000007 )
+ )
+ ( /4EBAE393 $noname  C13 1000pF {Lib=C}
+  (    1 VCC )
+  (    2 GND )
+ )
+ ( /4EBAC2B0 $noname  XL4 CONN_1 {Lib=CONN_1}
+  (    1 GND )
+ )
+ ( /4E57A59D $noname  XL3 CONN_1 {Lib=CONN_1}
+  (    1 +BATT )
+ )
+ ( /4E47AFD0 $noname  TP2 TESTPOINT {Lib=TESTPOINT}
+  (    1 /CC_GDO0 )
+ )
+ ( /4E47AC96 $noname  C12 1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4E459179 $noname  XL2 ST_SWD {Lib=ST_SWD}
+  (    1 +3.3V )
+  (    2 /SWCLK )
+  (    3 GND )
+  (    4 /SWDIO )
+ )
+ ( /4E37BB86 $noname  C9 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4E37BB85 $noname  C10 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4E37BB80 $noname  C8 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4E37BAEC $noname  C7 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4DC3C374 $noname  R9 100k {Lib=R}
+  (    1 /ADC_BAT )
+  (    2 GND )
+ )
+ ( /4DC3C36E $noname  R8 1M {Lib=R}
+  (    1 +BATT )
+  (    2 /ADC_BAT )
+ )
+ ( /4BE7DDFD $noname  C25 220pF {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BE7DDE3 $noname  C24 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BE7DDCA $noname  C23 220pF {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BE7DD9D $noname  C22 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BE7DD83 $noname  C21 0.1u {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BE7DD5E $noname  C20 220pF {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /4BE7D9C8 $noname  C17 27pF {Lib=C}
+  (    1 N-000049 )
+  (    2 GND )
+ )
+ ( /4BE7D9C2 $noname  C18 27pF {Lib=C}
+  (    1 N-000001 )
+  (    2 GND )
+ )
+ ( /4BE7D9B0 $noname  R7 56k {Lib=R}
+  (    1 N-000035 )
+  (    2 GND )
+ )
+ ( /4BE7D9A3 $noname  C19 0.1u {Lib=C}
+  (    1 N-000036 )
+  (    2 GND )
+ )
+ ( /4BE7D999 $noname  XTAL1 26MHz {Lib=CRYSTAL}
+  (    1 N-000049 )
+  (    2 N-000001 )
+ )
+ ( /4BE7D8B1 $noname  DD2 CC2500 {Lib=CC2500}
+  (    1 /CC_SCK )
+  (    2 /CC_MISO )
+  (    3 ? )
+  (    4 +3.3V )
+  (    5 N-000036 )
+  (    6 /CC_GDO0 )
+  (    7 /CC_CS )
+  (    8 N-000049 )
+  (    9 +3.3V )
+  (   10 N-000001 )
+  (   11 +3.3V )
+  (   12 /A1 )
+  (   13 /A2 )
+  (   14 +3.3V )
+  (   15 +3.3V )
+  (   16 GND )
+  (   17 N-000035 )
+  (   18 +3.3V )
+  (   19 GND )
+  (   20 /CC_MOSI )
+  (  PAD GND )
+ )
+)
+*
+{ Allowed footprints by component:
+$component R1
+ SMD*
+$endlist
+$component C3
+ SMD*
+$endlist
+$component XL6
+ RF_SMA_L
+ RF_SMA
+$endlist
+$component C30
+ SMD*
+$endlist
+$component L4
+ INDUCTOR*
+ SMD*
+$endlist
+$component C29
+ SMD*
+$endlist
+$component C28
+ SMD*
+$endlist
+$component L3
+ INDUCTOR*
+ SMD*
+$endlist
+$component L2
+ INDUCTOR*
+ SMD*
+$endlist
+$component C27
+ SMD*
+$endlist
+$component C26
+ SMD*
+$endlist
+$component C4
+ SMD*
+$endlist
+$component DD1
+ LQFP48
+$endlist
+$component F3
+ SMD*
+$endlist
+$component F4
+ SMD*
+$endlist
+$component XTAL2
+ CRYSTAL*
+$endlist
+$component C5
+ SMD*
+$endlist
+$component C6
+ SMD*
+$endlist
+$component D1
+ D*
+$endlist
+$component L1
+ INDUCTOR*
+ SMD*
+$endlist
+$component C2
+ SMD*
+$endlist
+$component C1
+ SMD*
+$endlist
+$component DA3
+ SOT23-5
+$endlist
+$component C16
+ SMD*
+$endlist
+$component C15
+ SMD*
+$endlist
+$component C11
+ SMD*
+$endlist
+$component R4
+ SMD*
+$endlist
+$component R5
+ SMD*
+$endlist
+$component C14
+ SMD*
+$endlist
+$component C13
+ SMD*
+$endlist
+$component TP2
+ TESTPOINT*
+$endlist
+$component C12
+ SMD*
+$endlist
+$component XL2
+ SIL-4
+$endlist
+$component C9
+ SMD*
+$endlist
+$component C10
+ SMD*
+$endlist
+$component C8
+ SMD*
+$endlist
+$component C7
+ SMD*
+$endlist
+$component R9
+ SMD*
+$endlist
+$component R8
+ SMD*
+$endlist
+$component C25
+ SMD*
+$endlist
+$component C24
+ SMD*
+$endlist
+$component C23
+ SMD*
+$endlist
+$component C22
+ SMD*
+$endlist
+$component C21
+ SMD*
+$endlist
+$component C20
+ SMD*
+$endlist
+$component C17
+ SMD*
+$endlist
+$component C18
+ SMD*
+$endlist
+$component R7
+ SMD*
+$endlist
+$component C19
+ SMD*
+$endlist
+$component XTAL1
+ CRYSTAL*
+$endlist
+$component DD2
+ QLP20
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "" ""
+ C18 1
+ XTAL1 2
+ XTAL2 2
+ DD2 10
+Net 4 "GND" "GND"
+ C20 2
+ DD1 35
+ DD1 47
+ XL5 2
+ C23 2
+ C22 2
+ C21 2
+ C17 2
+ C18 2
+ R7 2
+ R9 2
+ C19 2
+ C7 2
+ C12 2
+ XL4 1
+ C13 2
+ C25 2
+ C24 2
+ DD2 16
+ DD2 19
+ DD2 PAD
+ C8 2
+ C10 2
+ C9 2
+ XL2 3
+ C5 2
+ DA4 3
+ DA4 4
+ R5 2
+ DA3 4
+ C16 2
+ C6 2
+ C2 2
+ C1 2
+ XTAL2 H
+ C29 2
+ C30 2
+ XL6 GND
+ DD1 44
+ DD1 8
+ XL7 8
+ XL6 GND
+ XL6 GND
+ L2 2
+ C27 1
+ C15 2
+ C11 2
+ XL1 3
+ BZ1 C
+ DD1 23
+Net 7 "" ""
+ C14 2
+ R5 1
+ R4 2
+ DA4 7
+Net 11 "/PWR_ERROR" "PWR_ERROR"
+ DA4 5
+ DD1 32
+Net 19 "/ADC_BAT" "ADC_BAT"
+ R8 2
+ R9 1
+ DD1 10
+Net 20 "/LCD_XRES" "LCD_XRES"
+ XL1 1
+ DD1 22
+Net 21 "/LCD_XCS" "LCD_XCS"
+ DD1 20
+ XL1 2
+Net 22 "/LCD_SDA" "LCD_SDA"
+ XL1 4
+ DD1 21
+Net 23 "/LCD_SCLK" "LCD_SCLK"
+ XL1 5
+ DD1 25
+Net 24 "/LCD_BCKLT" "LCD_BCKLT"
+ DD1 18
+ XL1 8
+Net 25 "+3.3V" "+3.3V"
+ C24 1
+ C25 1
+ C20 1
+ C21 1
+ C22 1
+ C16 1
+ C15 1
+ C14 1
+ R4 1
+ F4 1
+ XL1 7
+ DD1 36
+ XL1 6
+ DD1 48
+ C8 1
+ DD1 24
+ C10 1
+ C9 1
+ DD1 9
+ DA4 1
+ DD2 4
+ C7 1
+ C12 1
+ DD1 1
+ XL2 1
+ DD2 11
+ DD2 9
+ C23 1
+ DD2 18
+ DD2 15
+ DD2 14
+Net 26 "/PB8" "PB8"
+ XL7 6
+ DD1 45
+Net 31 "/TX1" "TX1"
+ XL5 1
+ DD1 30
+Net 33 "/CC_CS" "CC_CS"
+ DD1 14
+ DD2 7
+Net 34 "/CC_MOSI" "CC_MOSI"
+ DD2 20
+ DD1 17
+Net 35 "" ""
+ R7 1
+ DD2 17
+Net 36 "" ""
+ DD2 5
+ C19 1
+Net 37 "/CC_SCK" "CC_SCK"
+ DD2 1
+ DD1 15
+Net 38 "/CC_MISO" "CC_MISO"
+ DD2 2
+ DD1 16
+Net 39 "/CC_GDO0" "CC_GDO0"
+ DD1 13
+ TP2 1
+ DD2 6
+Net 40 "/SWDIO" "SWDIO"
+ XL2 4
+ DD1 34
+Net 41 "/SWCLK" "SWCLK"
+ DD1 37
+ XL2 2
+Net 42 "/A4" "A4"
+ C28 1
+ L2 1
+ C26 2
+Net 43 "/A2" "A2"
+ DD2 13
+ C26 1
+Net 44 "/A1" "A1"
+ C4 1
+ DD2 12
+Net 45 "/PB4" "PB4"
+ XL7 3
+ DD1 40
+Net 46 "/PB1" "PB1"
+ DD1 19
+ XL7 1
+Net 47 "" ""
+ R1 1
+ C3 2
+Net 48 "/Lout" "Lout"
+ DA3 5
+ L1 1
+ D1 A
+Net 49 "" ""
+ XTAL1 1
+ C17 1
+ DD2 8
+ XTAL2 1
+Net 50 "/PB9" "PB9"
+ DD1 46
+ XL7 7
+Net 51 "/PB7" "PB7"
+ DD1 43
+ XL7 5
+Net 52 "/PB3" "PB3"
+ DD1 39
+ XL7 2
+Net 53 "/PB5" "PB5"
+ XL7 4
+ DD1 41
+Net 54 "" ""
+ BZ1 A
+ C3 1
+Net 55 "/Buzzer" "Buzzer"
+ DD1 42
+ R1 2
+Net 56 "/RF_Out" "RF_Out"
+ L4 1
+ C30 1
+ XL6 RF
+Net 57 "/A5" "A5"
+ L4 2
+ C29 1
+ C28 2
+ L3 1
+Net 58 "/A3" "A3"
+ C4 2
+ C27 2
+ L3 2
+Net 59 "VCC" "VCC"
+ DA3 1
+ D1 C
+ C13 1
+ F4 2
+ F3 1
+ C11 1
+ C5 1
+ C6 1
+ DA4 8
+ DA3 2
+Net 60 "+BATT" "+BATT"
+ XL3 1
+ R8 1
+ L1 2
+ C1 1
+ F3 2
+ C2 1
+}
+#End
