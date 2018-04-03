@@ -5,7 +5,7 @@
 <!--   Version : 2                       -->
 <!--   Program : TopoR Lite 6.3.18186    -->
 <!--   Date    : Tuesday, March 27, 2018 -->
-<!--   Time    : 10:38                   -->
+<!--   Time    : 23:48                   -->
 <!--*************************************-->
 
 <Project>
@@ -13,7 +13,7 @@
    <GUID>{9F22D9B6-84AA-4A48-8500-80F642155D84}</GUID>
    <Documents>
       <Section name="PCB">
-         <File path=".\AlienDetector.fsx" isopened="1" dateChange="2018-03-26 23:56:13"/>
+         <File path=".\AlienDetector.fsx" isopened="0" dateChange="2018-03-27 10:36:37"/>
       </Section>
       <Section name="AutoRouting"/>
    </Documents>

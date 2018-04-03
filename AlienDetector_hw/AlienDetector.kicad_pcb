@@ -870,6 +870,7 @@
   (module SOT:SOT23-5 (layer B.Cu) (tedit 5A9487F5) (tstamp 5AB993BB)
     (at 152.2 118 270)
     (path /4EBAE61B)
+    (attr smd)
     (fp_text reference DA1 (at -0.6 2.413 270) (layer B.SilkS)
       (effects (font (size 0.6 0.6) (thickness 0.15)) (justify mirror))
     )
@@ -952,6 +953,7 @@
   (module Pictures:Ostranna_12d7_10d1 (layer B.Cu) (tedit 0) (tstamp 5AB9946B)
     (at 167.25 115.25 180)
     (path /5A9D9084)
+    (attr smd)
     (fp_text reference Logo1 (at 0 0 180) (layer B.SilkS) hide
       (effects (font (size 1.524 1.524) (thickness 0.3)) (justify mirror))
     )
@@ -1230,6 +1232,7 @@
   (module PCB:TESTPOINT_1MM (layer B.Cu) (tedit 58BA8437) (tstamp 5AB994ED)
     (at 151 68.8)
     (path /4E47AFD0)
+    (attr smd)
     (fp_text reference TP1 (at 0 -1.09982) (layer B.SilkS) hide
       (effects (font (size 0.6 0.6) (thickness 0.15)) (justify mirror))
     )
@@ -1969,6 +1972,7 @@
   (module Connectors:ER-CON50HT-1 (layer B.Cu) (tedit 57213DC8) (tstamp 5AB9A2F5)
     (at 144.3 79.6 90)
     (path /5ABEAC5D)
+    (attr smd)
     (fp_text reference U1 (at 0.14 1.91 90) (layer B.SilkS)
       (effects (font (size 0.6 0.6) (thickness 0.15)) (justify mirror))
     )
@@ -2246,6 +2250,7 @@
   (module LQFP_TQFP:LQFP64 (layer B.Cu) (tedit 5A947F07) (tstamp 5AB9A56D)
     (at 165.75 82.95)
     (path /5ABEA5D0)
+    (attr smd)
     (fp_text reference DD1 (at 0 2.25044) (layer B.SilkS)
       (effects (font (size 0.59944 0.59944) (thickness 0.14986)) (justify mirror))
     )
@@ -2620,6 +2625,7 @@
   (module PCB:REF_POINT_2MM (layer B.Cu) (tedit 5A9471EF) (tstamp 5AB9CE82)
     (at 130.6 53.6)
     (path /5A97A83D)
+    (attr smd)
     (fp_text reference RP1 (at 0 1.6002) (layer B.SilkS) hide
       (effects (font (size 0.59944 0.59944) (thickness 0.14986)) (justify mirror))
     )
@@ -2633,6 +2639,7 @@
   (module PCB:REF_POINT_2MM (layer B.Cu) (tedit 5A9471EF) (tstamp 5AB9CE86)
     (at 177.6 122.4)
     (path /5A97AAD8)
+    (attr smd)
     (fp_text reference RP2 (at 0 1.6002) (layer B.SilkS) hide
       (effects (font (size 0.59944 0.59944) (thickness 0.14986)) (justify mirror))
     )
