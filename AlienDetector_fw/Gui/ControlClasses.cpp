@@ -153,11 +153,17 @@ void Chart_t::AddLineVert(float x, Color_t AColor) {
 }
 
 
-void Series_t::AddPoint(float x, float y) {
+void Series_t::LineAddPoint(float x, float y) {
     Lcd.DrawPoint(Parent->ScaledX(x), Parent->ScaledY(y), Color);
 }
 
-void Series_t::Clear() {
-//    Uart.Printf("%.1f; %.1f\r", XScale, YScale);
+void Series_t::ColSetValue(float x, float Value) {
+//    if(PrevValue == Value) return;
+    uint32_t cx = Parent->ScaledX(x * ColWidth + 1);
+    uint32_t cyPrev = Parent->ScaledY(PrevValue);
+    uint32_t cyNow  = Parent->ScaledY(Value);
+    Printf("%d %d\r", cyPrev, cyNow);
+    if(cyPrev > cyNow) Lcd.DrawRect(cx, cyNow, ColWidth-2, (cyPrev - cyNow), Color);
+    else Lcd.DrawRect(cx, cyPrev, ColWidth-2, (cyNow - cyPrev), Parent->ClrBack);
+    PrevValue = Value;
 }
-

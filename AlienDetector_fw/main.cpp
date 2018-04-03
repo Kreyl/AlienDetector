@@ -6,8 +6,8 @@
 #include "shell.h"
 #include "SimpleSensors.h"
 #include "buttons.h"
-#include "gui_engine.h"
-//#include "interface.h"
+//#include "gui_engine.h"
+#include "interface.h"
 
 // Forever
 EvtMsgQ_t<EvtMsg_t, MAIN_EVT_Q_LEN> EvtQMain;
@@ -31,9 +31,8 @@ int main(void) {
     Printf("\r%S %S\r\n", APP_NAME, BUILD_TIME);
     Clk.PrintFreqs();
 
-    Gui.Init();
-//    InitInterface();
-    Gui.DrawPage(0);
+    InitInterface();
+//    Gui.DrawPage(0);
 //    SimpleSensors::Init();
 
 //    TmrOneSecond.StartOrRestart();
@@ -90,7 +89,17 @@ void OnCmd(Shell_t *PShell) {
     if(PCmd->NameIs("Ping")) PShell->Ack(retvOk);
     else if(PCmd->NameIs("Version")) PShell->Printf("%S %S\r", APP_NAME, BUILD_TIME);
 
-//    else if(PCmd->NameIs("GetBat")) { PShell->Printf("Battery: %u\r", Audio.GetBatteryVmv()); }
+    if(PCmd->NameIs("Col")) {
+        uint32_t col=0;
+        uint32_t val = 0;
+        if(PCmd->GetNext<uint32_t>(&col) == retvOk) {
+            if(PCmd->GetNext<uint32_t>(&val) == retvOk) {
+                Series[col].ColSetValue(col, val);
+            }
+        }
+    }
+
+    //else if(PCmd->NameIs("GetBat")) { PShell->Printf("Battery: %u\r", Audio.GetBatteryVmv()); }
 
     else PShell->Ack(retvCmdUnknown);
 }

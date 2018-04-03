@@ -50,13 +50,13 @@ public:
 
 class LineVert_t : public LineHoriz_t {
 public:
-//    Color_t Clr;
+    Color_t Clr;
 //    void Draw() const;
     LineVert_t(uint16_t x0, uint16_t y0, uint16_t Len, uint16_t AWidth, Color_t AClr) :
         LineHoriz_t(x0, y0, AWidth, Len, AClr) {}
 };
 
-// ==== Button ====
+#if 1 // ==== Button ====
 enum BtnState_t {btnPressed, btnReleased};
 
 class Button_t : public Control_t {
@@ -86,8 +86,9 @@ public:
                 ClrPressedTop(AClrPressedTop),   ClrPressedBottom(AClrPressedBottom),
                 OnRelease(AOnRelease) {}
 };
+#endif
 
-// ==== Textbox ====
+#if 1 // ==== Textbox ====
 class Textbox_t : public Control_t {
 public:
     void Draw() const;
@@ -100,6 +101,7 @@ public:
                 ClrBack(AClrBack) {}
 
 };
+#endif
 
 // ==== Chart ====
 #define X_SCALE         ((float)(CHART_W_MS / CHART_W_PX))
@@ -112,14 +114,18 @@ struct Point_t {
 
 class Series_t {
 private:
-    Chart_t *Parent;
+    float PrevValue = -1000000;
 public:
+    Chart_t *Parent;
     Color_t Color;
-    void AddPoint(float x, float y);
-    void Clear();
-    Series_t(Chart_t *AParent, Color_t AClr) :
-        Parent(AParent),
-        Color(AClr) {}
+    // Line related
+    void LineAddPoint(float x, float y);
+    // Column related
+    uint32_t ColWidth = 4;
+    void ColSetValue(float x, float Value);
+    // Common
+    Series_t(Chart_t *AParent, Color_t AClr) : Parent(AParent), Color(AClr) {}
+    Series_t() : Parent(nullptr), Color(clRed) {}
 };
 
 class Chart_t {

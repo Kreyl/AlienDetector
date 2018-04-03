@@ -19,19 +19,20 @@ FrameBuffer_t<uint16_t, FRAMEBUFFER_LEN> FBuf;
 
 extern const Page_t* Page[];
 
-static THD_WORKING_AREA(waGuiThread, 256);
-__noreturn
-static THD_FUNCTION(GuiThread, arg) {
-    chRegSetThreadName("Gui");
-    Gui.ITask();
-}
+//static THD_WORKING_AREA(waGuiThread, 256);
+//__noreturn
+//static THD_FUNCTION(GuiThread, arg) {
+//    chRegSetThreadName("Gui");
+//    Gui.ITask();
+//}
 
 #if 1 // =========================== Implementation ============================
 void Gui_t::Init() {
     CurrPage = Page[0];
     Lcd.Init();
+    Lcd.Cls(clBlack);
 //    Touch.Init();
-    chThdCreateStatic(waGuiThread, sizeof(waGuiThread), NORMALPRIO, GuiThread, NULL);
+//    chThdCreateStatic(waGuiThread, sizeof(waGuiThread), NORMALPRIO, GuiThread, NULL);
 }
 
 void Gui_t::DrawPage(uint8_t APage) {
