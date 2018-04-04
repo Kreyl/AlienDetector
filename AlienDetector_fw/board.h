@@ -26,7 +26,7 @@
 //  Periphery
 #define I2C1_ENABLED            FALSE
 #define I2C2_ENABLED            FALSE
-#define I2C3_ENABLED            FALSE
+#define I2C3_ENABLED            TRUE
 #define SIMPLESENSORS_ENABLED   FALSE
 #define BUTTONS_ENABLED         FALSE
 
@@ -58,6 +58,9 @@
 #define LCD_WR_PIN      GPIOC, 5
 #define LCD_RD_PIN      GPIOC, 4
 #define LCD_TE_PIN      GPIOA, 0
+
+// Radio: SPI, PGpio, Sck, Miso, Mosi, Cs, Gdo0
+#define CC_Setup0       SPI1, GPIOA, 5,6,7, 4, 3
 
 // I2C
 #define I2C1_GPIO       GPIOB

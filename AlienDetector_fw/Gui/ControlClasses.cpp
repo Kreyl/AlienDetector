@@ -162,7 +162,6 @@ void Series_t::ColSetValue(float x, float Value) {
     uint32_t cx = Parent->ScaledX(x * ColWidth + 1);
     uint32_t cyPrev = Parent->ScaledY(PrevValue);
     uint32_t cyNow  = Parent->ScaledY(Value);
-    Printf("%d %d\r", cyPrev, cyNow);
     if(cyPrev > cyNow) Lcd.DrawRect(cx, cyNow, ColWidth-2, (cyPrev - cyNow), Color);
     else Lcd.DrawRect(cx, cyPrev, ColWidth-2, (cyNow - cyPrev), Parent->ClrBack);
     PrevValue = Value;

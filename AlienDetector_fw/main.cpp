@@ -6,14 +6,21 @@
 #include "shell.h"
 #include "SimpleSensors.h"
 #include "buttons.h"
-//#include "gui_engine.h"
 #include "interface.h"
+#include "radio_lvl1.h"
+#include "kl_i2c.h"
+#include "ee.h"
 
 // Forever
 EvtMsgQ_t<EvtMsg_t, MAIN_EVT_Q_LEN> EvtQMain;
 extern CmdUart_t Uart;
 void OnCmd(Shell_t *PShell);
 void ITask();
+
+int32_t ID;
+const EE_t ee { &i2c3 };
+static uint8_t ISetID(int32_t NewID);
+void ReadIDfromEE();
 
 int main(void) {
     // Start Watchdog. Will reset in main thread by periodic 1 sec events.
@@ -32,8 +39,14 @@ int main(void) {
     Clk.PrintFreqs();
 
     InitInterface();
-//    Gui.DrawPage(0);
 //    SimpleSensors::Init();
+
+    i2c3.Init();
+//    i2c3.ScanBus();
+    ee.Init();
+    ReadIDfromEE();
+
+    Radio.Init();
 
 //    TmrOneSecond.StartOrRestart();
     // Main cycle
@@ -99,8 +112,38 @@ void OnCmd(Shell_t *PShell) {
         }
     }
 
+    else if(PCmd->NameIs("SetID")) {
+        if(PCmd->GetNext<int32_t>(&ID) != retvOk) { PShell->Ack(retvCmdError); return; }
+        uint8_t r = ISetID(ID);
+        PShell->Ack(r);
+    }
+
     //else if(PCmd->NameIs("GetBat")) { PShell->Printf("Battery: %u\r", Audio.GetBatteryVmv()); }
 
     else PShell->Ack(retvCmdUnknown);
 }
 #endif
+
+#if 1 // ============================= Settings ================================
+// EEAddresses
+#define EE_ADDR_DEVICE_ID       0
+
+void ReadIDfromEE() {
+    ee.Read<int32_t>(EE_ADDR_DEVICE_ID, &ID);  // Read device ID
+    Printf("ID: %d\r", ID);
+}
+
+uint8_t ISetID(int32_t NewID) {
+    uint8_t rslt = ee.Write<int32_t>(EE_ADDR_DEVICE_ID, &NewID);
+    if(rslt == retvOk) {
+        ID = NewID;
+        Printf("New ID: %d\r", ID);
+        return retvOk;
+    }
+    else {
+        Printf("EE error: %u\r", rslt);
+        return retvFail;
+    }
+}
+#endif
+
