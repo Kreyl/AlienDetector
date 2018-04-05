@@ -40,31 +40,32 @@ static void rLvl1Thread(void *arg) {
     Radio.ITask();
 }
 
-//enum RadioMode_t {rmListen, rm
-
 __noreturn
 void rLevel1_t::ITask() {
     while(true) {
-        // Iterate fireflies
-        for(uint16_t fid = ID_FRFLY_MIN; fid <= ID_FRFLY_MAX; fid++) {
-//            Pkt.DtctrID = ID;
-//            Pkt.FrflyID = fid;
-//            DBG1_SET();
-//            CC.Transmit(&Pkt);
-//            DBG1_CLR();
-//            int8_t Rssi;
-//            uint8_t RxRslt = CC.Receive(4, &Pkt, &Rssi);
-//            if(RxRslt == retvOk) {
-//                if(Pkt.DtctrID == 0) {
-//                    Printf("%u Rssi=%d\r", Pkt.FrflyID, Rssi);
-//                    RxTable.Add(Pkt.FrflyID, Rssi);
-//                }
-//            }
-            RxTable.Add(fid, Random::Generate(-115, -15));
-        } // for fid
+        // Iterate fireflies several times
+        for(int i=0; i<2; i++) {
+            for(uint16_t fid = ID_FRFLY_MIN; fid <= ID_FRFLY_MAX; fid++) {
+                Pkt.DtctrID = ID;
+                Pkt.FrflyID = fid;
+                DBG1_SET();
+                CC.Transmit(&Pkt);
+                DBG1_CLR();
+                int8_t Rssi;
+                uint8_t RxRslt = CC.Receive(5, &Pkt, &Rssi);
+                if(RxRslt == retvOk) {
+                    if(Pkt.DtctrID == 0) {
+//                        Printf("%u Rssi=%d\r", Pkt.FrflyID, Rssi);
+                        RxTable.Add(Pkt.FrflyID, Rssi);
+                    }
+                    chThdSleepMilliseconds(2);
+                }
+    //            RxTable.Add(fid, Random::Generate(-115, -15));
+            } // for fid
+        } // for i
         EvtMsg_t msg(evtIdCheckRxTable);
         EvtQMain.SendNowOrExit(msg);
-        chThdSleepMilliseconds(4500);
+//        chThdSleepMilliseconds(45);
     } // while
 }
 #endif // task
