@@ -23,8 +23,8 @@
 
 // =================================== Common ==================================
 //#define CC_MDMCFG1_VALUE    0b10100010  // FEC=1, Preamble length=010 => 4bytes, +Channel spacing
-//#define CC_MDMCFG1_VALUE    0b10100011  // FEC=1, Preamble length=010 => 4bytes, +Channel spacing=11=MAX
-#define CC_MDMCFG1_VALUE    0b00100010  // FEC=0, Preamble length=010 => 4bytes, +Channel spacing
+#define CC_MDMCFG1_VALUE    0b10100011  // FEC=1, Preamble length=010 => 4bytes, +Channel spacing=11=MAX
+//#define CC_MDMCFG1_VALUE    0b00100010  // FEC=0, Preamble length=010 => 4bytes, +Channel spacing
 
 //#define CC_MCSM1_VALUE      0b00001100  // Channel is always clear, RX->RX,   TX->IDLE
 //#define CC_MCSM1_VALUE      0b00001111  // Channel is always clear, RX->RX,   TX->RX

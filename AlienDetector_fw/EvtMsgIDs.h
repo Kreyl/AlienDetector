@@ -14,28 +14,9 @@ enum EvtMsgId_t {
     evtIdShellCmd,
     evtIdEverySecond,
 
-    // Audio
-    evtIdSoundPlayStop,
-    evtIdSoundFileEnd,
-
-    // Usb
-    evtIdUsbConnect,
-    evtIdUsbDisconnect,
-    evtIdUsbReady,
-    evtIdUsbNewCmd,
-    evtIdUsbInDone,
-    evtIdUsbOutDone,
-
     // Misc periph
     evtIdButtons,
     evtIdAcc,
-    evtIdPwrOffTimeout,
 
-    // App specific
-    evtIdLedDone,
-    evtIdClash,
-    evtIdSwingStart,
-    evtIdSpinStart,
-    evtIdStab,
-    evtIdScrew,
+    evtIdCheckRxTable,
 };

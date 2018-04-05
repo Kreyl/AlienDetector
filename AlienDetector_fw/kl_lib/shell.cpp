@@ -5,7 +5,6 @@
  *      Author: Kreyl
  */
 
-#include "shell.h"
 #include "uart.h"
 
 extern CmdUart_t Uart;

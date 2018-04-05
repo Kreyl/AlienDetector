@@ -15,7 +15,7 @@
 #if 1 // ========================== Chart ======================================
 Chart_t Chart(
         0, 39, LCD_W, 200,            // Top, Left, Width, Height
-        0, 320, 15, 110,        // Xmin, Xmax, Ymin, Ymax
+        0, LCD_W, 0, 100,        // Xmin, Xmax, Ymin, Ymax
         &fntTahoma10x11, clWhite,   // Text
         clBlack                     // Back color
         );

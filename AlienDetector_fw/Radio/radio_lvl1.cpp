@@ -13,11 +13,11 @@
 
 cc2500_t CC(CC_Setup0);
 
-//#define DBG_PINS
+#define DBG_PINS
 
 #ifdef DBG_PINS
-#define DBG_GPIO1   GPIOB
-#define DBG_PIN1    0
+#define DBG_GPIO1   GPIOC
+#define DBG_PIN1    10
 #define DBG1_SET()  PinSetHi(DBG_GPIO1, DBG_PIN1)
 #define DBG1_CLR()  PinSetLo(DBG_GPIO1, DBG_PIN1)
 //#define DBG_GPIO2   GPIOB
@@ -30,6 +30,7 @@ cc2500_t CC(CC_Setup0);
 #endif
 
 rLevel1_t Radio;
+extern int16_t ID;
 
 #if 1 // ================================ Task =================================
 static THD_WORKING_AREA(warLvl1Thread, 256);
@@ -39,22 +40,31 @@ static void rLvl1Thread(void *arg) {
     Radio.ITask();
 }
 
+//enum RadioMode_t {rmListen, rm
+
 __noreturn
 void rLevel1_t::ITask() {
     while(true) {
-        uint8_t RxRslt = CC.Receive(999, &Pkt, &Rssi);
-        if(RxRslt == retvOk) {
-            Printf("Rx Rssi=%d\r", Rssi);
-            // Send message to main thd
-//            EvtMsg_t Msg(evtIdRadioCmd, Pkt.Btn);
-//            EvtQMain.SendNowOrExit(Msg);
-            // Report reception
-//            CC.Recalibrate();
+        // Iterate fireflies
+        for(uint16_t fid = ID_FRFLY_MIN; fid <= ID_FRFLY_MAX; fid++) {
+//            Pkt.DtctrID = ID;
+//            Pkt.FrflyID = fid;
+//            DBG1_SET();
 //            CC.Transmit(&Pkt);
-//            Printf("Tx\r");
-        } // if RxRslt ok
-//        else Printf("Rx\r");
-//        chThdSleepMilliseconds(11);
+//            DBG1_CLR();
+//            int8_t Rssi;
+//            uint8_t RxRslt = CC.Receive(4, &Pkt, &Rssi);
+//            if(RxRslt == retvOk) {
+//                if(Pkt.DtctrID == 0) {
+//                    Printf("%u Rssi=%d\r", Pkt.FrflyID, Rssi);
+//                    RxTable.Add(Pkt.FrflyID, Rssi);
+//                }
+//            }
+            RxTable.Add(fid, Random::Generate(-115, -15));
+        } // for fid
+        EvtMsg_t msg(evtIdCheckRxTable);
+        EvtQMain.SendNowOrExit(msg);
+        chThdSleepMilliseconds(4500);
     } // while
 }
 #endif // task

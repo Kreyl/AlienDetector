@@ -17,10 +17,12 @@ extern CmdUart_t Uart;
 void OnCmd(Shell_t *PShell);
 void ITask();
 
-int32_t ID;
+int16_t ID;
 const EE_t ee { &i2c3 };
-static uint8_t ISetID(int32_t NewID);
+static uint8_t ISetID(int16_t NewID);
 void ReadIDfromEE();
+
+void DisplayRx();
 
 int main(void) {
     // Start Watchdog. Will reset in main thread by periodic 1 sec events.
@@ -46,6 +48,7 @@ int main(void) {
     ee.Init();
     ReadIDfromEE();
 
+    Radio.RxTable.Clear();
     Radio.Init();
 
 //    TmrOneSecond.StartOrRestart();
@@ -81,6 +84,10 @@ void ITask() {
 //                } // switch
                 break;
 
+            case evtIdCheckRxTable:
+                DisplayRx();
+                break;
+
             // Measure battery and reset watchdog
             case evtIdEverySecond: {
                 // Reload IWDG
@@ -92,6 +99,45 @@ void ITask() {
         } // switch
     } // while true
 }
+
+
+Firefly_t SortedFirefly[RXTABLE_SZ];
+
+int CompareByRssi(const void* a, const void* b) {
+    int ra = ((Firefly_t*)a)->Rssi;
+    int rb = ((Firefly_t*)b)->Rssi;
+    if(ra <  rb) return 1;
+    if(ra == rb) return 0;
+    return -1;
+}
+int CompareByID(const void* a, const void* b) {
+    int ra = ((Firefly_t*)a)->ID;
+    int rb = ((Firefly_t*)b)->ID;
+    if(ra <  rb) return -1;
+    if(ra == rb) return 0;
+    return 1;
+}
+
+void DisplayRx() {
+    // Copy table
+    for(int i=0; i<RXTABLE_SZ; i++) {
+        SortedFirefly[i] = Radio.RxTable.Firefly[i];
+//        Printf("Src %u; %d\r", i, SortedFirefly[i].Rssi);
+    }
+    // Sort table by Rssi
+    qsort(SortedFirefly, RXTABLE_SZ, sizeof(Firefly_t), CompareByRssi);
+    // Sort first COL_CNT by ID
+    qsort(SortedFirefly, COL_CNT, sizeof(Firefly_t), CompareByID);
+
+    // Show result
+    for(int i=0; i<COL_CNT; i++) {
+//        Printf("Dst %u; %d\r", SortedFirefly[i].ID, SortedFirefly[i].Rssi);
+        Series[i].ColSetValue(i, SortedFirefly[i].Rssi + 116);
+    }
+
+    Radio.RxTable.Clear();
+}
+
 
 #if 1 // ======================= Command processing ============================
 void OnCmd(Shell_t *PShell) {
@@ -113,8 +159,9 @@ void OnCmd(Shell_t *PShell) {
     }
 
     else if(PCmd->NameIs("SetID")) {
-        if(PCmd->GetNext<int32_t>(&ID) != retvOk) { PShell->Ack(retvCmdError); return; }
-        uint8_t r = ISetID(ID);
+        int16_t NewID = 0;
+        if(PCmd->GetNext<int16_t>(&NewID) != retvOk) { PShell->Ack(retvCmdError); return; }
+        uint8_t r = ISetID(NewID);
         PShell->Ack(r);
     }
 
@@ -129,12 +176,12 @@ void OnCmd(Shell_t *PShell) {
 #define EE_ADDR_DEVICE_ID       0
 
 void ReadIDfromEE() {
-    ee.Read<int32_t>(EE_ADDR_DEVICE_ID, &ID);  // Read device ID
+    ee.Read<int16_t>(EE_ADDR_DEVICE_ID, &ID);  // Read device ID
     Printf("ID: %d\r", ID);
 }
 
-uint8_t ISetID(int32_t NewID) {
-    uint8_t rslt = ee.Write<int32_t>(EE_ADDR_DEVICE_ID, &NewID);
+uint8_t ISetID(int16_t NewID) {
+    uint8_t rslt = ee.Write<int16_t>(EE_ADDR_DEVICE_ID, &NewID);
     if(rslt == retvOk) {
         ID = NewID;
         Printf("New ID: %d\r", ID);
