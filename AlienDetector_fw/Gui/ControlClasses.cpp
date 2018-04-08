@@ -9,6 +9,7 @@
 #include "kl_lib.h"
 #include "uart.h"
 #include "ControlClasses.h"
+#include "fnt_Tahoma10x11.h"
 
 extern FrameBuffer_t<uint16_t, FRAMEBUFFER_LEN> FBuf;
 
@@ -55,7 +56,7 @@ void PrintInt(uint16_t Left, uint16_t Top,
         int32_t N, PFont_t Font, Justify_t Justify, Color_t ClrFront,
         Color_t ClrBack) {
     char S[12];
-//    kl_bufprint(S, 7, "%d", N); // XXX
+    PrintfToBuf(S, "%d", N);
     uint32_t w = Font->GetStringWidth(S), h = Font->Height;
     if(FBuf.Setup(w, h) == retvOk) {
         // Fill rect
@@ -158,11 +159,16 @@ void Series_t::LineAddPoint(float x, float y) {
 }
 
 void Series_t::ColSetValue(float x, float Value) {
-//    if(PrevValue == Value) return;
+    if(PrevValue == Value) return;
     uint32_t cx = Parent->ScaledX(x * ColWidth + 1);
     uint32_t cyPrev = Parent->ScaledY(PrevValue);
     uint32_t cyNow  = Parent->ScaledY(Value);
     if(cyPrev > cyNow) Lcd.DrawRect(cx, cyNow, ColWidth-2, (cyPrev - cyNow), Color);
     else Lcd.DrawRect(cx, cyPrev, ColWidth-2, (cyNow - cyPrev), Parent->ClrBack);
     PrevValue = Value;
+}
+
+void Series_t::ColPrintInt(float x, int N) {
+    uint32_t cx = Parent->ScaledX(x * ColWidth + 1)+7;
+    PrintInt(cx, 210, N, &fntTahoma10x11, jstCenter, clWhite, Color);
 }

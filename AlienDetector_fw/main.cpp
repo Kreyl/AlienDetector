@@ -133,6 +133,7 @@ void DisplayRx() {
     for(int i=0; i<COL_CNT; i++) {
 //        Printf("Dst %u; %d\r", SortedFirefly[i].ID, SortedFirefly[i].Rssi);
         Series[i].ColSetValue(i, SortedFirefly[i].Rssi + 116);
+        if(SortedFirefly[i].Rssi > -115) Series[i].ColPrintInt(i, SortedFirefly[i].ID + ID_FRFLY_MIN);
     }
 
     Radio.RxTable.Clear();

@@ -9,6 +9,7 @@
 
 #include "color.h"
 #include "font.h"
+#include "shell.h"
 
 enum Justify_t { jstLeft, jstCenter, jstRight };
 
@@ -123,6 +124,7 @@ public:
     // Column related
     uint32_t ColWidth = 4;
     void ColSetValue(float x, float Value);
+    void ColPrintInt(float x, int N);
     // Common
     Series_t(Chart_t *AParent, Color_t AClr) : Parent(AParent), Color(AClr) {}
     Series_t() : Parent(nullptr), Color(clRed) {}
