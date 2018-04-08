@@ -130,10 +130,15 @@ void DisplayRx() {
     qsort(SortedFirefly, COL_CNT, sizeof(Firefly_t), CompareByID);
 
     // Show result
+    bool ThereIsSomeone = false;
     for(int i=0; i<COL_CNT; i++) {
 //        Printf("Dst %u; %d\r", SortedFirefly[i].ID, SortedFirefly[i].Rssi);
         Series[i].ColSetValue(i, SortedFirefly[i].Rssi + 116);
-        if(SortedFirefly[i].Rssi > -115) Series[i].ColPrintInt(i, SortedFirefly[i].ID + ID_FRFLY_MIN);
+        if(SortedFirefly[i].Rssi > -115) {
+            ThereIsSomeone = true;
+            // Print firefly's ID
+            Series[i].ColPrintInt(i, SortedFirefly[i].ID + ID_FRFLY_MIN);
+        }
     }
 
     Radio.RxTable.Clear();
