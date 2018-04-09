@@ -10,6 +10,7 @@
 #include "radio_lvl1.h"
 #include "kl_i2c.h"
 #include "ee.h"
+#include "beeper.h"
 
 // Forever
 EvtMsgQ_t<EvtMsg_t, MAIN_EVT_Q_LEN> EvtQMain;
@@ -23,6 +24,8 @@ static uint8_t ISetID(int16_t NewID);
 void ReadIDfromEE();
 
 void DisplayRx();
+
+Beeper_t Beeper {BEEPER_PIN};
 
 int main(void) {
     // Start Watchdog. Will reset in main thread by periodic 1 sec events.
@@ -50,6 +53,9 @@ int main(void) {
 
     Radio.RxTable.Clear();
     Radio.Init();
+
+    Beeper.Init();
+    Beeper.StartOrRestart(bsqBeepBeep);
 
 //    TmrOneSecond.StartOrRestart();
     // Main cycle
@@ -140,6 +146,9 @@ void DisplayRx() {
             Series[i].ColPrintInt(i, SortedFirefly[i].ID + ID_FRFLY_MIN);
         }
     }
+    // Beep
+    if(ThereIsSomeone) Beeper.StartOrContinue(bsqAlien);
+    else Beeper.StartOrContinue(bsqIdle);
 
     Radio.RxTable.Clear();
 }
