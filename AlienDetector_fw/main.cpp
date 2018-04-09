@@ -128,7 +128,9 @@ void DisplayRx() {
     // Copy table
     for(int i=0; i<RXTABLE_SZ; i++) {
         SortedFirefly[i] = Radio.RxTable.Firefly[i];
-//        Printf("Src %u; %d\r", i, SortedFirefly[i].Rssi);
+        SortedFirefly[i].CalcAverage();
+        if(SortedFirefly[i].Cnt == 0) SortedFirefly[i].Rssi = -115;
+//        Printf("Src %u; %d %d\r", i, SortedFirefly[i].Rssi, SortedFirefly[i].Cnt);
     }
     // Sort table by Rssi
     qsort(SortedFirefly, RXTABLE_SZ, sizeof(Firefly_t), CompareByRssi);
@@ -139,12 +141,13 @@ void DisplayRx() {
     bool ThereIsSomeone = false;
     for(int i=0; i<COL_CNT; i++) {
 //        Printf("Dst %u; %d\r", SortedFirefly[i].ID, SortedFirefly[i].Rssi);
-        Series[i].ColSetValue(i, SortedFirefly[i].Rssi + 116);
-        if(SortedFirefly[i].Rssi > -115) {
+        if(SortedFirefly[i].Cnt > 0) {
+            Series[i].ColSetValue(i, SortedFirefly[i].Rssi + 116);
             ThereIsSomeone = true;
             // Print firefly's ID
-            Series[i].ColPrintInt(i, SortedFirefly[i].ID + ID_FRFLY_MIN);
+            Series[i].ColPrintInt(i, SortedFirefly[i].ID);
         }
+        else Series[i].ColSetValue(i, 1);
     }
     // Beep
     if(ThereIsSomeone) Beeper.StartOrContinue(bsqAlien);

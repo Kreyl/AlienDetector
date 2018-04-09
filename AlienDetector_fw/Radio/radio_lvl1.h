@@ -43,12 +43,17 @@ struct rPkt_t  {
 
 #if 1 // ============================= RX Table ================================
 #define RXTABLE_SZ              (ID_FRFLY_MAX - ID_FRFLY_MIN)
-union Firefly_t {
-    uint32_t DWord32;
-    struct {
-        int16_t ID, Rssi;
-    } __packed;
-    Firefly_t& operator = (const Firefly_t &Right) { DWord32 = Right.DWord32; return *this; }
+struct Firefly_t {
+    int32_t ID;
+    int32_t Rssi;
+    int32_t Cnt;
+    Firefly_t& operator = (const Firefly_t &Right) {
+        ID = Right.ID;
+        Rssi = Right.Rssi;
+        Cnt = Right.Cnt;
+        return *this;
+    }
+    void CalcAverage() { Rssi = Rssi / Cnt; }
 } __packed;
 
 class RxTable_t {
@@ -58,13 +63,16 @@ public:
     void Add(uint8_t ID, int8_t Rssi) {
         if(ID < ID_FRFLY_MIN or ID > ID_FRFLY_MAX) return;
         int indx = ID - ID_FRFLY_MIN;
-        Firefly[indx].Rssi = Rssi;
+        Firefly[indx].Rssi += Rssi;
+        Firefly[indx].Cnt++;
+//        Printf("%u; %d\r", ID, Rssi);
     }
 
     void Clear() {
         for(int i = 0; i<RXTABLE_SZ; i++) {
-            Firefly[i].ID = i;
-            Firefly[i].Rssi = -115;
+            Firefly[i].ID = i + ID_FRFLY_MIN;
+            Firefly[i].Rssi = 0;
+            Firefly[i].Cnt = 0;
         }
     }
 

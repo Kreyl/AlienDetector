@@ -2824,21 +2824,18 @@ Wire Wire Line
 	11250 9500 11550 9500
 Wire Wire Line
 	12050 9500 12150 9500
-$Comp
-L power:+3.3V #PWR057
-U 1 1 5B5F0F42
-P 12400 8650
-F 0 "#PWR057" H 12400 8610 30  0001 C CNN
-F 1 "+3.3V" H 12480 8680 30  0000 C CNN
-F 2 "" H 12400 8650 60  0000 C CNN
-F 3 "" H 12400 8650 60  0000 C CNN
-	1    12400 8650
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	12400 8650 12400 8800
+Text Label 2800 14400 0    50   ~ 0
+1V5
+Text Label 12500 8650 0    50   ~ 0
+1V5
+Wire Wire Line
+	12400 8650 12500 8650
 Wire Bus Line
 	9150 2850 9150 4150
 Wire Bus Line
 	6950 2850 6950 3400
+Text Notes 11950 8500 0    50   ~ 0
+Switch somehow from 3v3 to 1v5
 $EndSCHEMATC

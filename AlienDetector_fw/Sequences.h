@@ -365,17 +365,17 @@ const BeepChunk_t  bsqIdle[] = {
         {csGoto, 0}
 };
 const BeepChunk_t bsqAlien[] = {
-        {csSetup, 1, 1800},
+        {csSetup, 7, 1800},
         {csWait, 150},
         {csSetup, 0},
         {csWait, 35},
 
-        {csSetup, 2, 1800},
+        {csSetup, 11, 1800},
         {csWait, 170},
         {csSetup, 0},
         {csWait, 35},
 
-        {csSetup, 1, 1800},
+        {csSetup, 7, 1800},
         {csWait, 114},
         {csSetup, 0},
         {csWait, 500},

@@ -51,7 +51,7 @@
 #define UART_RX_PIN     10
 
 // Beeper
-#define BEEPER_TOP      99
+#define BEEPER_TOP      22
 #define BEEPER_PIN      { GPIOC, 6, TIM3, 1, invNotInverted, omPushPull, BEEPER_TOP }
 
 // LCD
